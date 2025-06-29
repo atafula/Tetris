@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Muestra en Consola -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <!-- Muestra en Archivo -->
+        <File name="File" fileName="log/registro.log">
+            <PatternLayout>
+                <!-- Patrón de mensaje para la salida en archivo -->
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level<!--%logger{36}--> - %msg%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <!-- Configuración de Loggers -->
+    <Loggers>
+        <!-- Configuración del Logger raíz -->
+        <Root level="info">
+            <!-- Asociación del archivo con el Logger raíz -->
+            <AppenderRef ref="File"/>
+        </Root>
+
+        <!-- Configuración de un logger custom llamado "TetrisTextUI" -->
+        <Logger name="TetrisTextUI" level="info" additivity="false">
+
+            <!-- Asociaciones -->
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+    </Loggers>
+</Configuration>
